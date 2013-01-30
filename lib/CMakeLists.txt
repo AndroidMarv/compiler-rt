@@ -185,3 +185,8 @@ foreach(arch x86_64 i386)
       CFLAGS "-std=c99")
   endif()
 endforeach()
+
+if(CMAKE_SYSTEM_NAME MATCHES "(Linux)|(Darwin)" AND CAN_TARGET_x86_64)
+  # Currently Cilk Plus Runtime is only supported on Linux and OS X
+  add_subdirectory(cilk)
+endif()
